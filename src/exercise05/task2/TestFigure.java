@@ -21,33 +21,33 @@ class TwoDimensionalComparator implements Comparator<TwoDimensional> {
 }
 
 public class TestFigure {
-    static TwoDimensionalComparator comparator2 = new TwoDimensionalComparator();
-    static ThreeDimensionalComparator comparator3 = new ThreeDimensionalComparator();
+    private static TwoDimensionalComparator comparator2 = new TwoDimensionalComparator();
+    private static ThreeDimensionalComparator comparator3 = new ThreeDimensionalComparator();
 
-    public static TwoDimensional getMinimumArea(ArrayList<TwoDimensional> al) {
+    private static TwoDimensional getMinimumArea(ArrayList<TwoDimensional> al) {
         Collections.sort(al, comparator2);
         return al.get(0);
     }
 
-    public static TwoDimensional getMaximumArea(ArrayList<TwoDimensional> al) {
+    private static TwoDimensional getMaximumArea(ArrayList<TwoDimensional> al) {
         Collections.sort(al, comparator2);
         return al.get(al.size()-1);
     }
 
-    public static ThreeDimensional getMinimumVolume(ArrayList<ThreeDimensional> al) {
+    private static ThreeDimensional getMinimumVolume(ArrayList<ThreeDimensional> al) {
         Collections.sort(al, comparator3);
         return al.get(0);
     }
 
-    public static ThreeDimensional getMaximumVolume(ArrayList<ThreeDimensional> al) {
+    private static ThreeDimensional getMaximumVolume(ArrayList<ThreeDimensional> al) {
         Collections.sort(al, comparator3);
         return al.get(al.size()-1);
     }
 
     public static void main(String[] args) {
-        ArrayList<Figure> figs = new ArrayList<Figure>();
-        ArrayList<TwoDimensional> figs2 = new ArrayList<TwoDimensional>();
-        ArrayList<ThreeDimensional> figs3 = new ArrayList<ThreeDimensional>();
+        ArrayList<Figure> figs = new ArrayList<>();
+        ArrayList<TwoDimensional> figs2 = new ArrayList<>();
+        ArrayList<ThreeDimensional> figs3 = new ArrayList<>();
         /*figs3.add(new Sphere(4));
         figs3.add(new Sphere(5));
         figs3.add(new Sphere(6));*/
@@ -80,12 +80,12 @@ public class TestFigure {
             if (rx.equals("exit") || rx.equals("quit")) break;
         } while (true);
 
-        for (int i=0; i<figs.size(); i++) {
-            if (figs.get(i) instanceof TwoDimensional) {
-                figs2.add((TwoDimensional) figs.get(i));
+        for (Figure fig : figs) {
+            if (fig instanceof TwoDimensional) {
+                figs2.add((TwoDimensional) fig);
             }
-            if (figs.get(i) instanceof ThreeDimensional) {
-                figs3.add((ThreeDimensional) figs.get(i));
+            if (fig instanceof ThreeDimensional) {
+                figs3.add((ThreeDimensional) fig);
             }
         }
 
@@ -94,8 +94,8 @@ public class TestFigure {
             System.out.println("None");
         }
         else {
-            for (int j=0; j<figs2.size(); j++) {
-                System.out.println(figs2.get(j).toString());
+            for (TwoDimensional aFigs2 : figs2) {
+                System.out.println(aFigs2.toString());
             }
         }
 
@@ -104,11 +104,13 @@ public class TestFigure {
             System.out.println("None");
         }
         else {
-            for (int k=0; k<figs3.size(); k++) {
-                System.out.println(figs3.get(k).toString());
+            for (ThreeDimensional aFigs3 : figs3) {
+                System.out.println(aFigs3.toString());
             }
         }
 
+        System.out.println();
+        System.out.println("MAXIMAL Figures");
         System.out.println("Figure with max Area: ");
         if (figs2.isEmpty()) {
             System.out.println("None");
@@ -127,5 +129,24 @@ public class TestFigure {
             System.out.println(max3.toString());
         }
 
+        System.out.println();
+        System.out.println("MINIMAL Figures");
+        System.out.println("Figure with min Area: ");
+        if (figs2.isEmpty()) {
+            System.out.println("None");
+        }
+        else {
+            TwoDimensional min2 = getMinimumArea(figs2);
+            System.out.println(min2.toString());
+        }
+
+        System.out.println("Figure with min Volume: ");
+        if (figs3.isEmpty()) {
+            System.out.println("None");
+        }
+        else {
+            ThreeDimensional min3 = getMinimumVolume(figs3);
+            System.out.println(min3.toString());
+        }
     }
 }
