@@ -53,13 +53,23 @@ public class TestFigure {
         figs3.add(new Sphere(6));*/
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.println("Bitte gib die gewünschte Form ein.");
+            System.out.println("Bitte gib die gewünschte Form ein. Oder \'exit\' zum beenden.");
             String rx = sc.nextLine();
             if (rx.equals("Circle") || rx.equals("circle")) {
                 System.out.println("Ein Kreis? Na gut. Bitte gib den Radius an.");
                 double r = sc.nextDouble();
                 sc.nextLine();      //otherwise the "\n" won't be read and the first println will be executed twice
                 figs.add(new Circle(r));
+            }
+            if (rx.equals("Rectangle") || rx.equals("rectangle")) {
+                System.out.println("Ein Rechteck? Na gut. Bitte gib Länge und Breite an.");
+                System.out.println("Zuerst die Länge");
+                double a = sc.nextDouble();
+                sc.nextLine();      //otherwise the "\n" won't be read and the first println will be executed twice
+                System.out.println("Jetzt die Breite");
+                double b = sc.nextDouble();
+                sc.nextLine();      //otherwise the "\n" won't be read and the first println will be executed twice
+                figs.add(new Rectangle(a, b));
             }
             if (rx.equals("Sphere") || rx.equals("sphere")) {
                 System.out.println("Eine Kugel? Na gut. Bitte gib den Radius an.");

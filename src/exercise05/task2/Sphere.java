@@ -6,8 +6,6 @@ package exercise05.task2;
 public class Sphere extends ThreeDimensional{
     protected double r;
 
-    public double Volume = 4/3*Math.PI*Math.pow(this.r, 3);
-
     public Sphere(double r) {
         this.r = r;
     }
