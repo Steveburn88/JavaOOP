@@ -58,11 +58,13 @@ public class TestFigure {
             if (rx.equals("Circle") || rx.equals("circle")) {
                 System.out.println("Ein Kreis? Na gut. Bitte gib den Radius an.");
                 double r = sc.nextDouble();
+                sc.nextLine();      //otherwise the "\n" won't be read and the first println will be executed twice
                 figs.add(new Circle(r));
             }
             if (rx.equals("Sphere") || rx.equals("sphere")) {
                 System.out.println("Eine Kugel? Na gut. Bitte gib den Radius an.");
                 double r = sc.nextDouble();
+                sc.nextLine();      //otherwise the "\n" won't be read and the first println will be executed twice
                 figs.add(new Sphere(r));
             }
             if (rx.equals("exit") || rx.equals("quit")) break;
@@ -77,23 +79,43 @@ public class TestFigure {
             }
         }
 
-        System.out.println("2D Figures in figs3:");
-        for (int j=0; j<figs2.size(); j++) {
-            figs2.get(j).toString();
+        System.out.println("2D Figures in figs2: ");
+        if (figs2.isEmpty()) {
+            System.out.println("None");
+        }
+        else {
+            for (int j=0; j<figs2.size(); j++) {
+                System.out.println(figs2.get(j).toString());
+            }
         }
 
-        System.out.println("3D Figures in figs3:");
-        for (int k=0; k<figs3.size(); k++) {
-            figs3.get(k).toString();
+        System.out.println("3D Figures in figs3: ");
+        if (figs3.isEmpty()) {
+            System.out.println("None");
+        }
+        else {
+            for (int k=0; k<figs3.size(); k++) {
+                System.out.println(figs3.get(k).toString());
+            }
         }
 
-        System.out.println("Figure with max Area");
-        TwoDimensional max2 = getMaximumArea(figs2);
-        System.out.print(max2.toString());
+        System.out.println("Figure with max Area: ");
+        if (figs2.isEmpty()) {
+            System.out.println("None");
+        }
+        else {
+            TwoDimensional max2 = getMaximumArea(figs2);
+            System.out.println(max2.toString());
+        }
 
-        System.out.println("Figure with max Volume");
-        ThreeDimensional max3 = getMaximumVolume(figs3);
-        System.out.print(max3.toString());
+        System.out.println("Figure with max Volume: ");
+        if (figs3.isEmpty()) {
+            System.out.println("None");
+        }
+        else {
+            ThreeDimensional max3 = getMaximumVolume(figs3);
+            System.out.println(max3.toString());
+        }
 
     }
 }
