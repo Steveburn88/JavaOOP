@@ -1,0 +1,2 @@
+This should appear in destination.txt,
+if all goes well.
